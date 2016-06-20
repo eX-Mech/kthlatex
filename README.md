@@ -7,4 +7,5 @@ The package will contain style and template files for:
 * letters
 * course material (exams, exercises)
 * presentations
+
 If allowed by copyright, it will also include logos
