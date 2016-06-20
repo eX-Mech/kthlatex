@@ -53,10 +53,10 @@
 % Define commands for setting the user definable parts of the title page
 \newcommand{\supervisor}[1]{\def\@supervisor{#1}}
 \newcommand{\examiner}[1]{\def\@examiner{#1}}
-\newif\ifsecondauthor
-\newcommand{\secondauthor}[1]{\def\@secondauthor{#1}\secondauthortrue}
-\newif\ifsubtitle
-\newcommand{\subtitle}[1]{\def\@subtitle{#1}\subtitletrue}
+\let\@secondauthor\@empty
+\newcommand{\secondauthor}[1]{\def\@secondauthor{#1}}
+\let\@subtitle\@empty
+\newcommand{\subtitle}[1]{\def\@subtitle{#1}}
 
 % Command to print out the title page
 \renewcommand{\titlepage}{
@@ -66,7 +66,8 @@
 \begin{huge}
   \noindent\sffamily\bfseries \@title \par
 \end{huge}
-\ifsubtitle
+\ifx\@subtitle\@empty\relax
+\else
 \begin{Large}
   \vspace{1ex}
   \noindent\sffamily\bfseries \@subtitle \par
@@ -78,7 +79,9 @@
   \begin{flushleft}
     \sffamily
     \expandafter\MakeUppercase\expandafter\@author \par
-    \ifsecondauthor\vspace{1ex}\expandafter\MakeUppercase\expandafter\@secondauthor \par\fi
+    \ifx\@secondauthor\@empty\relax
+    \else\vspace{1ex}\expandafter\MakeUppercase\expandafter\@secondauthor \par
+    \fi
   \end{flushleft}
 \end{large}
 
