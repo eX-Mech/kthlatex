@@ -1,0 +1,61 @@
+\documentclass[11pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{kththesis}
+
+% Use natbib abbreviated bibliography style
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{unsrtnat}
+
+\usepackage{lipsum} % This is just to get some nonsense text in this template, can be safely removed
+
+
+\title{Detta är den svenska titeln}
+\author{Osquar Student}
+\supervisor{Lotta Larsson}
+\examiner{Lennart Bladgren}
+
+\begin{document}
+
+\titlepage
+
+\begin{abstract}
+  Svensk sammanfattning.
+  \lipsum[1-2]
+\end{abstract}
+
+\begin{otherlanguage}{english}
+  \alttitle{This is the English Title}
+
+  \begin{abstract}
+  English abstract.
+  \lipsum[3-4]
+  \end{abstract}
+\end{otherlanguage}
+
+\frontmatter
+
+
+% This is where the actual contents of the thesis starts
+
+\chapter{Introduktion}
+
+Vi använder paketet \emph{natbib} för litteraturreferenser.  Därför
+anropar vi kommandot \texttt{citep} för att få referenser inom
+parentes, så här \citep{heisenberg2015}.  Det är också möjligt att använda
+författarens namn som en del av en mening genom att använda
+\texttt{citet}, om vi t.ex.\ talar om en studie av \citet{einstein2016}.
+
+\lipsum
+
+\section{Frågeställning}
+
+\lipsum[6]
+
+\chapter{Method}
+
+\lipsum
+
+\bibliography{references}
+
+\end{document}

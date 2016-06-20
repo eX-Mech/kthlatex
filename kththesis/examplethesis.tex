@@ -1,0 +1,65 @@
+\documentclass[11pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage{kththesis}
+
+% Use natbib abbreviated bibliography style
+\usepackage[square,numbers]{natbib}
+\bibliographystyle{unsrtnat}
+
+\usepackage{lipsum} % This is just to get some nonsense text in this template, can be safely removed
+
+\title{This is the English title}
+\author{Osquar Student}
+\supervisor{Lotta Larsson}
+\examiner{Lennart Bladgren}
+
+
+\begin{document}
+
+\titlepage
+
+\begin{abstract}
+  English abstract goes here.
+  \lipsum[1-2]
+\end{abstract}
+
+\begin{otherlanguage}{swedish}
+  \alttitle{Detta är den svenska titeln}
+
+  \begin{abstract}
+    Träutensilierna i ett tryckeri äro ingalunda en faktor där
+    trevnadens ordningens och ekonomiens upprätthållande, och dock är
+    det icke sällan som sorgliga erfarenheter göras ordningens och
+    ekon och miens därmed upprätthållande. Träutensilierna i ett
+    tryckeri äro ingalunda en oviktig faktor, för trevnadens
+    ordningens och och dock är det icke sällan.
+  \end{abstract}
+\end{otherlanguage}
+
+\frontmatter
+
+
+% This is where the actual contents of the thesis starts
+
+\chapter{Introduction}
+
+We use the \emph{natbib} packages for citations.  We therefore use the
+command \texttt{citep} to get a reference in parenthesis, like this
+\citep{heisenberg2015}.  It is also possible to include the author as part
+of the sentence using \texttt{citet}, like talking about the work of
+\citet{einstein2016}.
+
+\lipsum
+
+\section{Research Question}
+
+\lipsum[6]
+
+\chapter{Methods}
+
+\lipsum
+
+\bibliography{references}
+
+\end{document}
