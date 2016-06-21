@@ -17,8 +17,6 @@
 \LoadClass{report}
 
 %% Load other packages
-\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
 \RequirePackage[swedish,english]{babel}
 \RequirePackage[a4paper,twoside,
   top=30mm,bottom=30mm,inner=36mm,outer=18mm,
