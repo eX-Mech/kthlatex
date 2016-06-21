@@ -14,7 +14,7 @@
 
 \ProcessOptions\relax
 
-\LoadClass{report}
+\LoadClass[11pt]{report}
 
 %% Load other packages
 \RequirePackage[swedish,english]{babel}
@@ -23,11 +23,24 @@
   headsep=10mm,headheight=5mm]{geometry}
 \RequirePackage{fancyhdr}
 \RequirePackage{emptypage}
-\RequirePackage{palatino}
 \RequirePackage{titlesec}
 \RequirePackage{ragged2e}
 
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+\newif\ifxeorlua
+\ifxetex\xeorluatrue\fi
+\ifluatex\xeorluatrue\fi
 
+\ifxeorlua
+  \RequirePackage{fontspec}
+  \setmainfont{FreeSerif}
+  \setsansfont{FreeSans}
+  \setmonofont{FreeMono}
+\else
+  \RequirePackage[T1]{fontenc}
+  \RequirePackage{palatino}
+\fi
 
 % Set up the header and footer
 \fancyhead{}
@@ -37,7 +50,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \pagestyle{fancy}
 
-% The Palano font needs 5% extra linespacing
+% The Palatino font needs 5% extra linespacing
 \linespread{1.05}
 \setlength\RaggedRightParindent{\parindent}
 \RaggedRight
