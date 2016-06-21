@@ -1,6 +1,22 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{kththesis}[2016/06/16 KTH Thesis formatting /Örjan Ekeberg]
- 
+\ProvidesClass{kththesis}[2016/06/21 KTH Thesis formatting /Örjan Ekeberg]
+
+\newif\ifinswedish
+\DeclareOption{english}{}
+\DeclareOption{swedish}{\inswedishtrue}
+
+\newif\ifbachelor
+\DeclareOption{bachelor}{\bachelortrue}
+\DeclareOption{master}{}
+
+%% Send any unknown option to the report class
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+
+\ProcessOptions\relax
+
+\LoadClass{report}
+
+%% Load other packages
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[swedish,english]{babel}
@@ -13,15 +29,6 @@
 \RequirePackage{titlesec}
 \RequirePackage{ragged2e}
 
-\newif\ifinswedish
-\DeclareOption{english}{}
-\DeclareOption{swedish}{\inswedishtrue}
-
-\newif\ifbachelor
-\DeclareOption{bachelor}{\bachelortrue}
-\DeclareOption{master}{}
-
-\ProcessOptions\relax
 
 
 % Set up the header and footer
@@ -32,7 +39,7 @@
 \renewcommand{\headrulewidth}{0pt}
 \pagestyle{fancy}
 
-% The Palationo font needs 5% extra linespacing
+% The Palano font needs 5% extra linespacing
 \linespread{1.05}
 \setlength\RaggedRightParindent{\parindent}
 \RaggedRight
