@@ -17,15 +17,17 @@
 \LoadClass[11pt]{report}
 
 %% Load other packages
-\RequirePackage[swedish,english]{babel}
+\RequirePackage[swedish,english]{babel} % International language support
 \RequirePackage[a4paper,twoside,
   top=30mm,bottom=30mm,inner=36mm,outer=18mm,
-  headsep=10mm,headheight=5mm]{geometry}
-\RequirePackage{fancyhdr}
-\RequirePackage{emptypage}
-\RequirePackage{titlesec}
-\RequirePackage{ragged2e}
+  headsep=10mm,headheight=5mm]{geometry} % Set paper and contents dimensions
+\RequirePackage{fancyhdr} % Take control of headers and footers
+\RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
+\RequirePackage{titlesec} % Redefine the appearance of headers
+\RequirePackage{ragged2e} % Ragged right margin is preferred for readability
+\RequirePackage{tocbibind} % Include the bibliography in the table of contents
 
+% Make it possible to conditionally depend on the TeX-engine used
 \RequirePackage{ifxetex}
 \RequirePackage{ifluatex}
 \newif\ifxeorlua
@@ -50,8 +52,10 @@
 \renewcommand{\headrulewidth}{0pt}
 \pagestyle{fancy}
 
-% The Palatino font needs 5% extra linespacing
+% Add 5% extra linespacing
 \linespread{1.05}
+
+% Use ragged right margin and indented first lines of paragraphs
 \setlength\RaggedRightParindent{\parindent}
 \RaggedRight
 
@@ -75,9 +79,19 @@
 \newcommand{\secondauthor}[1]{\def\@secondauthor{#1}}
 \let\@subtitle\@empty
 \newcommand{\subtitle}[1]{\def\@subtitle{#1}}
+\let\@alttitle\@empty
+\newcommand{\alttitle}[1]{\def\@alttitle{#1}}
+\let\@principal\@empty
+\newcommand{\principal}[1]{\def\@principal{#1}}
+\let\@email\@empty
+\newcommand{\email}[1]{\def\@email{#1}}
+\let\@school\@empty
+\newcommand{\school}[1]{\def\@school{#1}}
+\let\@programme\@empty
+\newcommand{\programme}[1]{\def\@programme{#1}}
 
-% Command to print out the title page
-\renewcommand{\titlepage}{
+% Command to print out the standardized flyleaf page
+\newcommand{\flyleaf}{
 \newgeometry{top=65mm,bottom=30mm,left=62mm,right=18mm}
 \thispagestyle{empty}
 \ifinswedish\selectlanguage{swedish}\fi
@@ -108,15 +122,23 @@
 \begin{flushleft}
   \sffamily
   \ifinswedish
-    Examensarbete, \ifbachelor grundnivå\else avancerad nivå\fi\\
+    \@programme\\
+    \ifx\@date\@empty\relax\else Datum: \@date\\\fi
     Handledare: \@supervisor\\
     Examinator: \@examiner\\
-    Skolan för datavetenskap och kommunikation\\
+    \ifx\@principal\@empty\relax\else Uppdragsgivare: \@principal\\\fi
+    \ifx\@alttitle\empty\relax\else Engelsk titel: %
+    \begin{otherlanguage}{english}\@alttitle\end{otherlanguage}\\\fi
+    \@school\\
   \else
-    \ifbachelor Batchelor\else Master\fi 's Thesis\\
+    \@programme\\
+    \ifx\@date\@empty\relax\else Date: \@date\\\fi
     Supervisor: \@supervisor\\
     Examiner: \@examiner\\
-    School of Computer Science and Communication\\
+    \ifx\@principal\@empty\relax\else Principal: \@principal\\\fi
+    \ifx\@alttitle\empty\relax\else Swedish title: %
+    \begin{otherlanguage}{swedish}\@alttitle\end{otherlanguage}\\\fi
+    \@school\\
   \fi
 \end{flushleft}
 \restoregeometry
@@ -125,16 +147,10 @@
 \clearpage
 }
 
-% Command to print out the title in the alternative language (Swedish/English)
-\newcommand{\alttitle}[1]{%
-  \begin{huge}
-    \noindent\sffamily\bfseries #1 \par
-  \end{huge}
-}
 
-\newcommand{\frontmatter}{
-  \cleardoublepage
-  \tableofcontents
+\newcommand{\frontmatter}{} % NoOP
+
+\newcommand{\mainmatter}{
   \cleardoublepage
   \pagenumbering{arabic}
 }

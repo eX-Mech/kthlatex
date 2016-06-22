@@ -11,32 +11,44 @@
 
 
 \title{Detta är den svenska titeln}
+\alttitle{This is the English translation of the title}
 \author{Osquar Student}
+\email{osquar@kth.se}
 \supervisor{Lotta Larsson}
 \examiner{Lennart Bladgren}
+\principal{Företaget AB}
+\programme{Civilingenjör Datateknik}
+\school{Skolan för Datavetenskap och Kommunikation}
+\date{\today}
+
 
 \begin{document}
 
-\titlepage
+% Försättsblad
+\flyleaf
 
 \begin{abstract}
   Svensk sammanfattning.
   \lipsum[1-2]
 \end{abstract}
 
-\begin{otherlanguage}{english}
-  \alttitle{This is the English Title}
+\clearpage
 
+\begin{otherlanguage}{english}
   \begin{abstract}
   English abstract.
   \lipsum[3-4]
   \end{abstract}
 \end{otherlanguage}
 
-\frontmatter
+\cleardoublepage
+
+\tableofcontents
 
 
 % This is where the actual contents of the thesis starts
+\mainmatter
+
 
 \chapter{Introduktion}
 
@@ -57,5 +69,9 @@ författarens namn som en del av en mening genom att använda
 \lipsum
 
 \bibliography{references}
+
+\appendix
+
+\chapter{Onödigt Material som Bilaga}
 
 \end{document}
