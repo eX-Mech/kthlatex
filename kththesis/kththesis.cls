@@ -68,7 +68,7 @@
   {\thesection}{1em}{}
 \titleformat{\subsection}
   {\normalfont\sffamily\large\bfseries}
-  {\thesection}{1em}{}
+  {\thesubsection}{1em}{}
 
 \renewenvironment{abstract}{\section*{\abstractname}}{\clearpage}
 
