@@ -1,5 +1,8 @@
 # kththesis
-This is the LaTeX class for MSc and PhD theses at KTH. It does not define a cover page which is handled by KTH Library separately, instead it creates a flyleaf page with title, author, supervisor and examiner. The package contains example on how to use the class.
+This is the LaTeX class for MSc and PhD theses at KTH. The guidelines are defined here:
+https://intra.kth.se/en/administration/kommunikation/mallar/avhandlingarochexamensarbeten
+
+The class does not define a cover page which is handled by KTH Library separately, instead it creates a flyleaf page with title, author, supervisor and examiner. The package contains example on how to use the class.
 
 
 Earlier styles for reference are:
