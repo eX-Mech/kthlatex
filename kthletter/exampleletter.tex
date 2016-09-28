@@ -1,14 +1,13 @@
-\documentclass[a4paper, 12pt, final]{kthletter}
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
+% for Swedish letters remove the option 'english'
+\documentclass[english]{kthletter}
 
-\usepackage{lipsum} % only needed to generate dummy text in the example
-
-\begin{document}
+% Define here relevant information
+% defines eventual bank accounts (usually left blank)
 \accounts{}
-% input your address (default is Brinellvägen 8, 100 44 Stockholm)
-\address{Lindstedtsvägen 24, SE-100 44 STOCKHOLM, SWEDEN}
-\date{Stockholm, September 28, 2016}
+% your address
+\address{Brinellvägen 8, 100 44 Stockholm}
+% the date
+\date{Stockholm, \today}
 \location{Lindstedtsvägen 24}
 \name{Giampiero Salvi}
 \signature{Giampiero Salvi\\Associate Professor\\KTH}
@@ -17,10 +16,26 @@
 \email{giampi@kth.se}
 \web{https://www.kth.se/profile/giampi/}
 
-\begin{letter}{}
-\opening{To the renowned and respected recipient}
+\begin{document}
 
-\lipsum[23-24]
+\begin{letter}[5643]% optional dossier number
+  {European Institute of Applied Studies,\\%recipient
+  European Union}
+\opening{Good morning!}
+
+Donec et nisl id sapien blandit mattis. Aenean dictum odio sit amet risus. Morbi
+purus. Nulla a est sit amet purus venenatis iaculis. Vivamus viverra purus vel
+magna. Donec in justo sed odio malesuada dapibus. Nunc ultrices aliquam
+nunc. Vivamus facilisis pellentesque velit. Nulla nunc velit, vulputate dapibus,
+vulputate id, mattis ac, justo. Nam mattis elit dapibus purus. Quisque enim risus,
+congue non, elementum ut, mattis quis, sem. Quisque elit.
+Maecenas non massa. Vestibulum pharetra nulla at lorem. Duis quis quam id
+lacus dapibus interdum. Nulla lorem. Donec ut ante quis dolor bibendum condi-
+mentum. Etiam egestas tortor vitae lacus. Praesent cursus. Mauris bibendum
+pede at elit. Morbi et felis a lectus interdum facilisis. Sed suscipit gravida turpis.
+Nulla at lectus. Vestibulum ante ipsum primis in faucibus orci luctus et ultri-
+ces posuere cubilia Curae; Praesent nonummy luctus nibh. Proin turpis nunc,
+congue eu, egestas ut, fringilla at, tellus. In hac habitasse platea dictumst.
 
 \closing{Best regards,}
 

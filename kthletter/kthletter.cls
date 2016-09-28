@@ -40,14 +40,19 @@
 \DeclareOption{SS}{\renewcommand\@kthletter@layout{SS}}
 \newcommand{\logotype}[1]{\renewcommand{\@kthletter@logo}{#1}}
 \newcommand{\@kthletter@logo}{KTH-logo}
-\newcommand{\@kthletter@referencestr}{Ev diarienummer}
-\newcommand{\@kthletter@receipientstr}{Mottagare}
+\newcommand{\@kthletter@dnrstr}{Ev diarienummer}
+\newcommand{\@kthletter@recipientstr}{Mottagare}
 \ProcessOptions
 \if@kthletterenglish
-  \renewcommand{\@kthletter@referencestr}{Ev reference number}
-  \renewcommand{\@kthletter@receipientstr}{Receipient}
+  \renewcommand{\@kthletter@dnrstr}{Ev dossier number}
+  \renewcommand{\@kthletter@recipientstr}{Recipient}
+  \RequirePackage[english]{babel}
+\else
+  \RequirePackage[swedish]{babel}
 \fi
+\RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
+\RequirePackage{times}
 \RequirePackage[a4paper]{geometry}
 \RequirePackage{graphics}
 \RequirePackage{ifpdf}
@@ -80,38 +85,26 @@
     \fontencoding{T1}\fontfamily{cmss}\selectfont
     \fontsize{7}{8.5}\selectfont
     \parbox{\textwidth}{\offinterlineskip
-      \setlength{\lineskip}{4pt}
-      \setlength{\normallineskip}{4pt}
+      %\setlength{\lineskip}{4pt}
+      %\setlength{\normallineskip}{4pt}
       \begin{center}
-        \makebox[\textwidth]{\hfill
-          Kungliga Tekniska h\"ogskolan%
-          \hfill
+        \begin{tabular}{p{0.9\textwidth}p{0.1\textwidth}}
+          \textbf{KTH} & \\
+          \fromaddress & \\
+          \telephonenum\ | \@kthletter@email\ | \@kthletter@web &
           \ifnum\@nameuse{@kthletter@lastpage\the@kthletter@letter}=1%
           \else
-            \llap{\thepage
-              \ifnum\@nameuse{@kthletter@lastpage\the@kthletter@letter}=0%
-                \G@refundefinedtrue
-      \else
-                \space(\@nameuse{@kthletter@lastpage\the@kthletter@letter})%
-              \fi
-            }%
-          \fi}\\
-        \makebox[0pt]{\rule{180mm}{0.4pt}}\\
-        \makebox[0pt]{\def\\{; }\strut
-          \textbf{KTH} -- \fromaddress.
-          Tel:~\telephonenum.
-          Fax:~\@kthletter@fax.
-          E-post:~\@kthletter@email}\\
-        \makebox[0pt]{\strut
-          \@kthletter@accounts
-          \settowidth{\@tempdima}{\@kthletter@accounts}%
-          \settowidth{\@tempdimb}{\@kthletter@web}%
-          \ifdim\@tempdima>1pt\ifdim\@tempdimb>1pt\relax
-            \space
-          \fi\fi
-          \@kthletter@web}
-      \end{center}}\fi}
-  \let\@evenfoot\@oddfoot}
+            \hfill\thepage
+            \ifnum\@nameuse{@kthletter@lastpage\the@kthletter@letter}=0%
+              \G@refundefinedtrue
+            \else
+              \space(\@nameuse{@kthletter@lastpage\the@kthletter@letter})%
+            \fi
+          \fi
+        \end{tabular}
+      \end{center}}%end parbox
+    \fi}%end oddfoot
+  \let\@evenfoot\@oddfoot}% end plain
 \newcommand*{\name}[1]{\def\fromname{#1}}
 \newsavebox{\@kthletter@signature}
 \newcounter{@kthletter@signature}
@@ -149,14 +142,14 @@
 \def\web{\urldef{\@kthletter@web}\@kthletter@url}
 \address[\@kthletter@loc\\SE-100 44~Stockholm\\Sweden]%
         {\fromlocation\\SE-100 44~Stockholm\\Sweden}
-\location[NADA]{Osquars~backe~2}
-\telephone{08~-~790~81~76}
-\telefax{08~-~790~09~30}
+\location[KTH]{Brinellvägen 8, 100 44 Stockholm}
+\telephone{08~-~790~xx~xx}
+\telefax{08~-~790~xx~xx}
 \accounts{Pg:~1~56~53-9. Bg:~895-9223. Momsreg.nr/VAT:~SE202100305401.}
 \date{Stockholm, \today}
-\email{inst@nada.kth.se}
-\web{www.nada.kth.se}
-\InputIfFileExists{nada-brev.cfg}
+\email{inst@kth.se}
+\web{www.kth.se}
+\InputIfFileExists{kthletter.cfg}
     {\typeout{Loading local letter configuration file.}}{}
 \AtBeginDocument{%
   \@ifpackageloaded{babel}{\let\dateswedish=\datesymd}{}}
@@ -258,18 +251,35 @@
 \newcommand*{\opening}[1]{%
   \centerline{%
     \setlength{\unitlength}{1mm}
-    \begin{picture}(0,55)(105,-85)
+    \begin{picture}(0,0)
       \if@kthletter@head
-        \put(105,-7){\makebox(0,0)[t]{%
-            \scalebox{0.192}{\includegraphics{\@kthletter@logo}}}}
+        \put(-95,20){\makebox(0,0)[t]{%
+            \scalebox{0.25}{\includegraphics{\@kthletter@logo}}}}
+        \put(22,10){\makebox(0,0)[lb]{%ciao}}%
+            \begin{tabular}{p{0.45\textwidth}}%
+              {\small\textbf{\@kthletter@dnrstr}}\\%
+              \@kthletter@dnr\end{tabular}}}
       \fi
-      \@nameuse{@kthletter@\@kthletter@layout}
-      \put(120,-80){\makebox(0,0)[lb]{%
-          \begin{tabular}{@{}l}\@kthletter@dnr\end{tabular}}}
-      \put(120,-85){\makebox(0,0)[lt]{%
-          \begin{tabular}{@{}l}\@date\end{tabular}}}
+      %\@nameuse{@kthletter@\@kthletter@layout}
+      %\put(120,-80){\makebox(0,0)[lb]{%
+      %    \begin{tabular}{@{}l}\@kthletter@dnr\end{tabular}}}
+      %\put(120,-85){\makebox(0,0)[lt]{%
+      %    \begin{tabular}{@{}l}\@date\end{tabular}}}
     \end{picture}}
+  %\begin{tabular}{p{0.6\textwidth}p{0.45\textwidth}}
+  %  & \@kthletter@dnrstr \\
+  %  & \@kthletter@dnr
+  %\end{tabular}
+  \vspace{5mm}
+  \hfill
+  \begin{minipage}{0.65\textwidth}
+    \textbf{\@kthletter@recipientstr}\\
+    \toname\\
+    \toaddress
+  \end{minipage}
+
   \vspace*{5mm}
+  \@date\\[5mm]
   #1\par\nobreak}
 \newcommand{\closing}[1]{\par\nobreak\vspace{\parskip}%
   \stopbreaks
