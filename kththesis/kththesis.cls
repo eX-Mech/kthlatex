@@ -5,6 +5,10 @@
 \DeclareOption{english}{}
 \DeclareOption{swedish}{\inswedishtrue}
 
+\newif\ifgfivepaper
+\DeclareOption{a4paper}{}
+\DeclareOption{g5paper}{\gfivepapertrue}
+
 \newif\ifbachelor
 \DeclareOption{bachelor}{\bachelortrue}
 \DeclareOption{master}{}
@@ -14,17 +18,23 @@
 
 \ProcessOptions\relax
 
-%\LoadClass[11pt]{report}
+\ifgfivepaper
+\LoadClass[10pt]{report}
+\else
 \LoadClass[12pt]{report}
+\fi
 
 %% Load other packages
 \RequirePackage[swedish,english]{babel} % International language support
-%\RequirePackage[a4paper,twoside,
-%  top=30mm,bottom=30mm,inner=36mm,outer=18mm,
-%  headsep=10mm,headheight=5mm]{geometry} % Set paper and contents dimensions
+\ifgfivepaper
+\RequirePackage[paperwidth=169mm,paperheight=239mm,twoside,
+  top=30mm,bottom=30mm,inner=36mm,outer=18mm,
+  headsep=10mm,headheight=5mm]{geometry} % Set paper and contents dimensions
+\else
 \RequirePackage[a4paper,twoside,
   top=37mm,bottom=50mm,inner=45mm,outer=35mm,
   headsep=15mm,headheight=5mm,footskip=25mm]{geometry} % Set paper and contents dimensions
+\fi
 \RequirePackage{fancyhdr} % Take control of headers and footers
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 \RequirePackage{titlesec} % Redefine the appearance of headers
