@@ -14,17 +14,21 @@
 
 \ProcessOptions\relax
 
-\LoadClass[11pt]{report}
+%\LoadClass[11pt]{report}
+\LoadClass[12pt]{report}
 
 %% Load other packages
 \RequirePackage[swedish,english]{babel} % International language support
+%\RequirePackage[a4paper,twoside,
+%  top=30mm,bottom=30mm,inner=36mm,outer=18mm,
+%  headsep=10mm,headheight=5mm]{geometry} % Set paper and contents dimensions
 \RequirePackage[a4paper,twoside,
-  top=30mm,bottom=30mm,inner=36mm,outer=18mm,
-  headsep=10mm,headheight=5mm]{geometry} % Set paper and contents dimensions
+  top=37mm,bottom=50mm,inner=45mm,outer=35mm,
+  headsep=15mm,headheight=5mm,footskip=25mm]{geometry} % Set paper and contents dimensions
 \RequirePackage{fancyhdr} % Take control of headers and footers
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 \RequirePackage{titlesec} % Redefine the appearance of headers
-\RequirePackage{ragged2e} % Ragged right margin is preferred for readability
+% \RequirePackage{ragged2e} % Ragged right margin is preferred for readability
 \RequirePackage{tocbibind} % Include the bibliography in the table of contents
 
 % Make it possible to conditionally depend on the TeX-engine used
@@ -60,8 +64,8 @@
 \linespread{1.05}
 
 % Use ragged right margin and indented first lines of paragraphs
-\setlength\RaggedRightParindent{\parindent}
-\RaggedRight
+%\setlength\RaggedRightParindent{\parindent}
+%\RaggedRight
 
 % Set the proper format for the headers
 \titleformat{\chapter}[display]
@@ -94,8 +98,8 @@
 \let\@programme\@empty
 \newcommand{\programme}[1]{\def\@programme{#1}}
 
-% Command to print out the standardized flyleaf page
-\newcommand{\flyleaf}{
+% Command to print out the standardized title page
+\renewcommand{\titlepage}{
 \newgeometry{top=65mm,bottom=30mm,left=62mm,right=18mm}
 \thispagestyle{empty}
 \ifinswedish\selectlanguage{swedish}\fi
@@ -148,8 +152,8 @@
 \restoregeometry
 
 \pagenumbering{roman}
-\clearpage
 \setcounter{page}{2}
+\cleardoublepage
 }
 
 
