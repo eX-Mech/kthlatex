@@ -24,8 +24,16 @@
 \LoadClass[12pt]{report}
 \fi
 
+% Make it possible to conditionally depend on the TeX-engine used
+\RequirePackage{ifxetex}
+\RequirePackage{ifluatex}
+\newif\ifxeorlua
+\ifxetex\xeorluatrue\fi
+\ifluatex\xeorluatrue\fi
+
 %% Load other packages
 
+\ifxeorlua
 \RequirePackage{polyglossia}
 \ifinswedish
 \setmainlanguage{swedish}
@@ -33,6 +41,9 @@
 \else
 \setmainlanguage{english}
 \setotherlanguage{swedish}
+\fi
+\else
+\RequirePackage[swedish,english]{babel}
 \fi
 
 \ifgfivepaper
@@ -49,13 +60,6 @@
 \RequirePackage{titlesec} % Redefine the appearance of headers
 % \RequirePackage{ragged2e} % Ragged right margin is preferred for readability
 \RequirePackage{tocbibind} % Include the bibliography in the table of contents
-
-% Make it possible to conditionally depend on the TeX-engine used
-\RequirePackage{ifxetex}
-\RequirePackage{ifluatex}
-\newif\ifxeorlua
-\ifxetex\xeorluatrue\fi
-\ifluatex\xeorluatrue\fi
 
 \ifxeorlua
   \RequirePackage{fontspec}
@@ -167,14 +171,14 @@
   \fi
 \end{flushleft}
 \restoregeometry
-
-\pagenumbering{roman}
-\setcounter{page}{2}
 \cleardoublepage
 }
 
 
-\newcommand{\frontmatter}{} % NoOP
+\newcommand{\frontmatter}{
+  \pagenumbering{roman}
+  \setcounter{page}{1}
+}
 
 \newcommand{\mainmatter}{
   \cleardoublepage
