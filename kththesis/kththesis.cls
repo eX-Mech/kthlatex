@@ -25,7 +25,16 @@
 \fi
 
 %% Load other packages
-\RequirePackage[swedish,english]{babel} % International language support
+
+\RequirePackage{polyglossia}
+\ifinswedish
+\setmainlanguage{swedish}
+\setotherlanguage{english}
+\else
+\setmainlanguage{english}
+\setotherlanguage{swedish}
+\fi
+
 \ifgfivepaper
 \RequirePackage[paperwidth=169mm,paperheight=239mm,twoside,
   top=30mm,bottom=30mm,inner=36mm,outer=18mm,
@@ -54,9 +63,7 @@
   \defaultfontfeatures{
     Ligatures={TeX}
   }
-  \setmainfont{FreeSerif}
-  \setsansfont{FreeSans}
-  \setmonofont{FreeMono}
+  \setmainfont{TeX Gyre Pagella}%% The Palatino from the TeX Gyre Project
 \else
   \RequirePackage[T1]{fontenc}
   \RequirePackage{palatino}

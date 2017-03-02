@@ -3,6 +3,8 @@
 *.blg
 *.log
 *.toc
+*.bcf
+*.run.xml
 *~
 exempelavhandling.pdf
 examplethesis.pdf
