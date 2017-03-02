@@ -3,11 +3,11 @@
 % remove this if you are using XeLaTeX or LuaLaTeX
 \usepackage[utf8]{inputenc}
 
-% Use natbib abbreviated bibliography style
-\usepackage[square,numbers]{natbib}
-\bibliographystyle{unsrtnat}
+\usepackage{blindtext} % This is just to get some nonsense text in this template, can be safely removed
 
-\usepackage{lipsum} % This is just to get some nonsense text in this template, can be safely removed
+\usepackage{csquotes} % Recommended by biblatex
+\usepackage{biblatex}
+\addbibresource{references.bib} % The file containing our references, in BibTeX format
 
 
 \title{Detta är den svenska titeln}
@@ -24,20 +24,24 @@
 
 \begin{document}
 
+\frontmatter
+
 % Försättsblad
-\flyleaf
+\titlepage
 
 \begin{abstract}
   Svensk sammanfattning.
-  \lipsum[1-2]
+
+  \blindtext
 \end{abstract}
 
 \clearpage
 
 \begin{otherlanguage}{english}
   \begin{abstract}
-  English abstract.
-  \lipsum[3-4]
+    English abstract.
+
+    \blindtext
   \end{abstract}
 \end{otherlanguage}
 
@@ -52,26 +56,27 @@
 
 \chapter{Introduktion}
 
-Vi använder paketet \emph{natbib} för litteraturreferenser.  Därför
-anropar vi kommandot \texttt{citep} för att få referenser inom
-parentes, så här \citep{heisenberg2015}.  Det är också möjligt att använda
-författarens namn som en del av en mening genom att använda
-\texttt{citet}, om vi t.ex.\ talar om en studie av \citet{einstein2016}.
+Vi använder paketet \emph{biblatex} för litteraturreferenser.  Därför
+anropar vi kommandot \texttt{parencite} för att få referenser inom
+parentes, så här \parencite{heisenberg2015}.  Det är också möjligt
+att använda författarens namn som en del av en mening genom att
+använda \texttt{textcite}, om vi t.ex.\ talar om en studie av
+\textcite{einstein2016}.
 
-\lipsum
+\Blindtext
 
 \section{Frågeställning}
 
-\lipsum[6]
+\blindtext
 
-\chapter{Method}
+\chapter{Metodval}
 
-\lipsum
+\blindtext
 
-\bibliography{references}
+\printbibliography
 
 \appendix
 
-\chapter{Onödigt Material som Bilaga}
+\chapter{Extra Material som Bilaga}
 
 \end{document}

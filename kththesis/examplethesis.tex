@@ -3,11 +3,12 @@
 % remove this if you are using XeLaTeX or LuaLaTeX
 \usepackage[utf8]{inputenc}
 
-% Use natbib abbreviated bibliography style
-\usepackage[square,numbers]{natbib}
-\bibliographystyle{unsrtnat}
+\usepackage{blindtext} % This is just to get some nonsense text in this template, can be safely removed
 
-\usepackage{lipsum} % This is just to get some nonsense text in this template, can be safely removed
+\usepackage{csquotes} % Recommended by biblatex
+\usepackage{biblatex}
+\addbibresource{references.bib} % The file containing our references, in BibTeX format
+
 
 \title{This is the English title}
 \alttitle{Detta är den svenska översättningen av titeln}
@@ -22,24 +23,27 @@
 
 \begin{document}
 
+\frontmatter
+
 % Title page
-\flyleaf
+\titlepage
 
 \begin{abstract}
   English abstract goes here.
-  \lipsum[1-2]
+
+  \blindtext
 \end{abstract}
 
 \clearpage
 
 \begin{otherlanguage}{swedish}
   \begin{abstract}
-    Träutensilierna i ett tryckeri äro ingalunda en faktor där
-    trevnadens ordningens och ekonomiens upprätthållande, och dock är
-    det icke sällan som sorgliga erfarenheter göras ordningens och
-    ekon och miens därmed upprätthållande. Träutensilierna i ett
-    tryckeri äro ingalunda en oviktig faktor, för trevnadens
-    ordningens och och dock är det icke sällan.
+    Träutensilierna i ett tryckeri äro ingalunda en oviktig faktor,
+    för trevnadens, ordningens och ekonomiens upprätthållande, och
+    dock är det icke sällan som sorgliga erfarenheter göras på grund
+    af det oförstånd med hvilket kaster, formbräden och regaler
+    tillverkas och försäljas Kaster som äro dåligt hopkomna och af
+    otillräckligt.
   \end{abstract}
 \end{otherlanguage}
 
@@ -54,23 +58,23 @@
 
 \chapter{Introduction}
 
-We use the \emph{natbib} packages for citations.  We therefore use the
-command \texttt{citep} to get a reference in parenthesis, like this
-\citep{heisenberg2015}.  It is also possible to include the author as part
-of the sentence using \texttt{citet}, like talking about the work of
-\citet{einstein2016}.
+We use the \emph{biblatex} package to handle our references.  We therefore use the
+command \texttt{parencite} to get a reference in parenthesis, like this
+\parencite{heisenberg2015}.  It is also possible to include the author
+as part of the sentence using \texttt{textcite}, like talking about
+the work of \textcite{einstein2016}.
 
-\lipsum
+\blindtext
 
 \section{Research Question}
 
-\lipsum[6]
+\Blindtext
 
 \chapter{Methods}
 
-\lipsum
+\blindtext
 
-\bibliography{references}
+\printbibliography
 
 \appendix
 
