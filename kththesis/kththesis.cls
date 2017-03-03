@@ -31,19 +31,23 @@
 \ifxetex\xeorluatrue\fi
 \ifluatex\xeorluatrue\fi
 
+\unless\ifxeorlua
+\fi
+
 %% Load other packages
 
 \ifxeorlua
 \RequirePackage{polyglossia}
-\ifinswedish
-\setmainlanguage{swedish}
-\setotherlanguage{english}
-\else
-\setmainlanguage{english}
-\setotherlanguage{swedish}
+  \ifinswedish
+  \setmainlanguage{swedish}
+  \setotherlanguage{english}
+  \else
+  \setmainlanguage{english}
+  \setotherlanguage{swedish}
 \fi
 \else
-\RequirePackage[swedish,english]{babel}
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[swedish,english]{babel}
 \fi
 
 \ifgfivepaper
