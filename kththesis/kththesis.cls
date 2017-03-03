@@ -19,9 +19,9 @@
 \ProcessOptions\relax
 
 \ifgfivepaper
-\LoadClass[10pt]{report}
+  \LoadClass[10pt]{report}
 \else
-\LoadClass[12pt]{report}
+  \LoadClass[12pt]{report}
 \fi
 
 % Make it possible to conditionally depend on the TeX-engine used
@@ -31,20 +31,17 @@
 \ifxetex\xeorluatrue\fi
 \ifluatex\xeorluatrue\fi
 
-\unless\ifxeorlua
-\fi
-
 %% Load other packages
 
 \ifxeorlua
-\RequirePackage{polyglossia}
+  \RequirePackage{polyglossia}
   \ifinswedish
-  \setmainlanguage{swedish}
-  \setotherlanguage{english}
+    \setmainlanguage{swedish}
+    \setotherlanguage{english}
   \else
-  \setmainlanguage{english}
-  \setotherlanguage{swedish}
-\fi
+    \setmainlanguage{english}
+    \setotherlanguage{swedish}
+  \fi
 \else
   \RequirePackage[utf8]{inputenc}
   \RequirePackage[swedish,english]{babel}
@@ -62,15 +59,11 @@
 \RequirePackage{fancyhdr} % Take control of headers and footers
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 \RequirePackage{titlesec} % Redefine the appearance of headers
-% \RequirePackage{ragged2e} % Ragged right margin is preferred for readability
 
 \ifxeorlua
   \RequirePackage{fontspec}
-  % this enebles TeX style ligatures such as ---, '', ``, and so on
-  \defaultfontfeatures{
-    Ligatures={TeX}
-  }
-  \setmainfont{TeX Gyre Pagella}%% The Palatino from the TeX Gyre Project
+  \defaultfontfeatures{Ligatures={TeX}} % This enables TeX style ligatures such as ---, '', ``, and so on
+  \setmainfont{TeX Gyre Pagella} % Palatino from the TeX Gyre Project
 \else
   \RequirePackage[T1]{fontenc}
   \RequirePackage{palatino}
@@ -86,10 +79,6 @@
 
 % Add 5% extra linespacing
 \linespread{1.05}
-
-% Use ragged right margin and indented first lines of paragraphs
-%\setlength\RaggedRightParindent{\parindent}
-%\RaggedRight
 
 % Set the proper format for the headers
 \titleformat{\chapter}[display]
