@@ -59,7 +59,6 @@
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 \RequirePackage{titlesec} % Redefine the appearance of headers
 % \RequirePackage{ragged2e} % Ragged right margin is preferred for readability
-\RequirePackage[nottoc,notlof,notlot]{tocbibind} % Include the bibliography in the table of contents
 
 \ifxeorlua
   \RequirePackage{fontspec}
