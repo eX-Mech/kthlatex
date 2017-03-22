@@ -113,17 +113,25 @@
 
 % Command to print out the standardized title page
 \renewcommand{\titlepage}{
-\newgeometry{top=65mm,bottom=30mm,left=62mm,right=18mm}
+\ifgfivepaper
+  \newgeometry{top=65mm,bottom=30mm,left=62mm,right=18mm}
+\else
+  \newgeometry{top=65mm,bottom=30mm,left=50mm,right=35mm}
+\fi
 \thispagestyle{empty}
 \ifinswedish\selectlanguage{swedish}\fi
 \begin{huge}
-  \noindent\sffamily\bfseries \@title \par
+  \begin{flushleft}
+    \noindent\sffamily\bfseries \@title \par
+  \end{flushleft}
 \end{huge}
 \ifx\@subtitle\@empty\relax
 \else
 \begin{Large}
   \vspace{1ex}
-  \noindent\sffamily\bfseries \@subtitle \par
+  \begin{flushleft}
+    \noindent\sffamily\bfseries \@subtitle \par
+  \end{flushleft}
 \end{Large}
 \fi
 
