@@ -58,7 +58,23 @@
 \fi
 \RequirePackage{fancyhdr} % Take control of headers and footers
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
+
 \RequirePackage{titlesec} % Redefine the appearance of headers
+% === Patch to circumvent a bug in the titlesec package version 2.10.1
+\@ifpackagelater{titlesec}{2016/03/21}{%
+ % Package titlesec is on version 2.10.2 or higher, nothing to do %
+}{%
+ % Check if package titlesec is on version 2.10.1 %
+ \@ifpackagelater{titlesec}{2016/03/15}{%
+  % Package titlesec on version 2.10.1, patch accordingly %
+  \RequirePackage{etoolbox}%
+  \patchcmd{\ttlh@hang}{\parindent\z@}{\parindent\z@\leavevmode}{}{}%
+  \patchcmd{\ttlh@hang}{\noindent}{}{}{}%
+ }{%
+  % Package titlsecon is on version 2.10.0 or lower, nothing to do %
+ }%
+}
+% === End ot titlesec patch
 
 \ifxeorlua
   \RequirePackage{fontspec}
