@@ -85,12 +85,21 @@
       \vspace{0pt} % apparently needed to make the vertical alignment work
       \hfill
       \footnotesize
+      \ifinswedish
       \begin{tabular}{p{3cm}p{3cm}p{3cm}}
         \textbf{RAPPORT} & \textbf{Dokumentdatum} & \textbf{Ev. diarienummer} \\
         & \@date & \@diarienr \\
         \multicolumn{3}{l}{\textbf{Skapat av}} \\
         \multicolumn{3}{l}{\@author} \\
       \end{tabular}
+      \else
+      \begin{tabular}{p{3cm}p{3cm}p{3cm}}
+        \textbf{REPORT} & \textbf{Date} & \textbf{Reference number} \\
+        & \@date & \@diarienr \\
+        \multicolumn{3}{l}{\textbf{Created by}} \\
+        \multicolumn{3}{l}{\@author} \\
+      \end{tabular}
+      \fi
     \end{minipage}
   \end{textblock}%
   \vspace*{3cm}
