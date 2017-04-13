@@ -6,11 +6,11 @@
 \DeclareOption{swedish}{\inswedishtrue}
 
 %% Send any unknown option to the report class
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 
 \ProcessOptions\relax
 
-\LoadClass[12pt]{report}
+\LoadClass[12pt]{article}
 
 % Make it possible to conditionally depend on the TeX-engine used
 \RequirePackage{ifxetex}
@@ -35,11 +35,17 @@
   \RequirePackage[swedish,english]{babel}
 \fi
 
-\RequirePackage[a4paper,twoside,
-  top=26mm,bottom=40mm,inner=26mm,outer=26mm,
-  headsep=15mm,headheight=5mm,footskip=25mm]{geometry} % Set paper and contents dimensions
+\RequirePackage[a4paper,
+  twoside,
+  top=26mm,
+  bottom=40mm,
+  inner=26mm,
+  outer=26mm,
+  headsep=15mm,
+  headheight=5mm,
+  footskip=25mm]{geometry} % Set paper and contents dimensions
 \RequirePackage{fancyhdr} % Take control of headers and footers
-\RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
+%\RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 \RequirePackage[absolute]{textpos} % to place title box in first page
 \setlength{\TPHorizModule}{1mm}%
 \setlength{\TPVertModule}{1mm}%
