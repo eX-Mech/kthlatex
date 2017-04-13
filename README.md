@@ -6,6 +6,7 @@ The package will contain style and template files for:
 * PhD theses (`kththesis`)
 * letters (`kthletter`)
 * course material (`kthcourse`: exams, exercises)
+* reports (`kthreport`)
 * presentations (`kthpresentation`)
+* logos (`kthsymbols`)
 
-If allowed by copyright, it will also include logos
