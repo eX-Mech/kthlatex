@@ -82,7 +82,8 @@
   \setmainfont{TeX Gyre Pagella} % Palatino from the TeX Gyre Project
 \else
   \RequirePackage[T1]{fontenc}
-  \RequirePackage{palatino}
+  \RequirePackage{lmodern}  % Required to handle bold sans
+  \RequirePackage{tgpagella}
 \fi
 
 % Set up the header and footer
