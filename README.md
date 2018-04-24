@@ -1,12 +1,13 @@
 # kthlatex
-This will be a collection of style files and templates that implement the graphic profile used at KTH Royal Institute of Technology, Stockholm, Sweden
+This is a collection of style files and templates that implement the graphic profile used at KTH Royal Institute of Technology, Stockholm, Sweden
 
-The package will contain style and template files for:
+These are the templates that are already implemented:
 * Masters theses (`kththesis`)
-* PhD theses (`kththesis`)
 * letters (`kthletter`)
-* course material (`kthcourse`: exams, exercises)
 * reports (`kthreport`)
 * presentations (`kthpresentation`)
 * logos (`kthsymbols`)
 
+These are the templates we intend to implement in the future:
+* PhD theses (`kththesis`)
+* course material (`kthcourse`: exams, exercises)
