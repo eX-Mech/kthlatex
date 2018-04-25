@@ -12,3 +12,28 @@
 \usebackgroundtemplate{\vbox{\null\vspace{5mm}
   \hspace{5mm}\pgfuseimage{kthlogo}\par
   \vspace{47mm}\hbox{\hspace{-65mm}\pgfuseimage{kthprofil}}}}
+
+% move title to center
+\makeatletter
+\setbeamertemplate{frametitle}{
+    \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+    \@tempdima=\textwidth%
+    \advance\@tempdima by\beamer@leftmargin%
+    \advance\@tempdima by\beamer@rightmargin%
+    \hfill%
+    \begin{beamercolorbox}[sep=0.3cm,center,wd=\the\@tempdima]{frametitle}
+        \usebeamerfont{frametitle}%
+        \vbox{}\vskip+1ex%
+        \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
+        \strut\insertframetitle\strut\par%
+        {%
+            \ifx\insertframesubtitle\@empty%
+            \else%
+            {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+            \fi
+        }%
+        \vskip-1ex%
+        \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+    \end{beamercolorbox}%
+}
+\makeatother
