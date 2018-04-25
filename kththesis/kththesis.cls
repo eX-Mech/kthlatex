@@ -79,11 +79,14 @@
 \ifxeorlua
   \RequirePackage{fontspec}
   \defaultfontfeatures{Ligatures={TeX}} % This enables TeX style ligatures such as ---, '', ``, and so on
-  \setmainfont{TeX Gyre Pagella} % Palatino from the TeX Gyre Project
+  \setmainfont{TeX Gyre Termes}  %% Times like font
+  \setsansfont{TeX Gyre Heros}   %% Helvetica like font
+  \setmonofont{TeX Gyre Cursor}  %% Courier like font
 \else
   \RequirePackage[T1]{fontenc}
-  \RequirePackage{lmodern}  % Required to handle bold sans
-  \RequirePackage{tgpagella}
+  \RequirePackage{tgtermes}
+  \RequirePackage{tgheros}
+  \RequirePackage{tgcursor}
 \fi
 
 % Set up the header and footer
@@ -172,19 +175,19 @@
     \ifx\@date\@empty\relax\else Datum: \@date\\\fi
     Handledare: \@supervisor\\
     Examinator: \@examiner\\
+    \@school\\
     \ifx\@principal\@empty\relax\else Uppdragsgivare: \@principal\\\fi
     \ifx\@alttitle\empty\relax\else Engelsk titel: %
-    \begin{otherlanguage}{english}\@alttitle\end{otherlanguage}\\\fi
-    \@school\\
+    \begin{otherlanguage}{english}\sffamily\@alttitle\end{otherlanguage}\\\fi
   \else
     \@programme\\
     \ifx\@date\@empty\relax\else Date: \@date\\\fi
     Supervisor: \@supervisor\\
     Examiner: \@examiner\\
+    \@school\\
     \ifx\@principal\@empty\relax\else Principal: \@principal\\\fi
     \ifx\@alttitle\empty\relax\else Swedish title: %
-    \begin{otherlanguage}{swedish}\@alttitle\end{otherlanguage}\\\fi
-    \@school\\
+    \begin{otherlanguage}{swedish}\sffamily\@alttitle\end{otherlanguage}\\\fi
   \fi
 \end{flushleft}
 \restoregeometry
