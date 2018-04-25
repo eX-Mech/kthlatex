@@ -20,8 +20,9 @@
     \@tempdima=\textwidth%
     \advance\@tempdima by\beamer@leftmargin%
     \advance\@tempdima by\beamer@rightmargin%
-    \hfill%
-    \begin{beamercolorbox}[sep=0.3cm,center,wd=\the\@tempdima]{frametitle}
+    \advance\@tempdima by -23mm%
+    \vskip -1mm%
+    \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
         \usebeamerfont{frametitle}%
         \vbox{}\vskip+1ex%
         \if@tempswa\else\csname beamer@ftecenter\endcsname\fi%
