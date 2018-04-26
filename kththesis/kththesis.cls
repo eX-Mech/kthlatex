@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{kththesis}[2016/06/21 KTH Thesis formatting /Örjan Ekeberg]
+\ProvidesClass{kththesis}[2018/04/26 KTH Thesis formatting]
 
 \newif\ifinswedish
 \DeclareOption{english}{}
