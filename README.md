@@ -6,6 +6,7 @@ These are the templates that are already implemented:
 * letters (`kthletter`)
 * reports (`kthreport`)
 * presentations (`kthpresentation`)
+
 Additional files:
 * logos and images (`kthsymbols`)
 
