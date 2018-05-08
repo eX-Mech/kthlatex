@@ -1,5 +1,4 @@
 # kthletter
-The goal is to define a kthletter.sty file and templates for letters in Swedish and English. Currently the style that is available is:
-* nadabrev.sty: http://system.csc.kth.se/misc/tex/
+Class for letters at KTH.
 
-This is probably outdated.
+Check `exampleletter.tex` for an example on how to create letters.
