@@ -1,5 +1,5 @@
 # kthlatex
-This is a collection of style files and templates that implement the graphic profile used at KTH Royal Institute of Technology, Stockholm, Sweden
+This is a collection LaTeX classes and templates that implement the graphic profile used at KTH Royal Institute of Technology, Stockholm, Sweden
 
 These are the templates that are already implemented:
 * Masters theses (`kththesis`)
