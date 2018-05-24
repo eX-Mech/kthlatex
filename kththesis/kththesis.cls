@@ -122,8 +122,8 @@
 \newcommand{\subtitle}[1]{\def\@subtitle{#1}}
 \let\@alttitle\@empty
 \newcommand{\alttitle}[1]{\def\@alttitle{#1}}
-\let\@principal\@empty
-\newcommand{\principal}[1]{\def\@principal{#1}}
+\let\@hostcompany\@empty
+\newcommand{\hostcompany}[1]{\def\@hostcompany{#1}}
 \let\@email\@empty
 \newcommand{\email}[1]{\def\@email{#1}}
 \let\@school\@empty
@@ -176,7 +176,7 @@
     Handledare: \@supervisor\\
     Examinator: \@examiner\\
     \@school\\
-    \ifx\@principal\@empty\relax\else Uppdragsgivare: \@principal\\\fi
+    \ifx\@hostcompany\@empty\relax\else Uppdragsgivare: \@hostcompany\\\fi
     \ifx\@alttitle\empty\relax\else Engelsk titel: %
     \begin{otherlanguage}{english}\sffamily\@alttitle\end{otherlanguage}\\\fi
   \else
@@ -185,7 +185,7 @@
     Supervisor: \@supervisor\\
     Examiner: \@examiner\\
     \@school\\
-    \ifx\@principal\@empty\relax\else Principal: \@principal\\\fi
+    \ifx\@hostcompany\@empty\relax\else Host company: \@hostcompany\\\fi
     \ifx\@alttitle\empty\relax\else Swedish title: %
     \begin{otherlanguage}{swedish}\sffamily\@alttitle\end{otherlanguage}\\\fi
   \fi
