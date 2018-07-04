@@ -59,6 +59,8 @@
 \RequirePackage{fancyhdr} % Take control of headers and footers
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 
+\RequirePackage{pdfpages} % Used to include the preformatted KTH cover pages
+
 \RequirePackage{titlesec} % Redefine the appearance of headers
 % === Patch to circumvent a bug in the titlesec package version 2.10.1
 \@ifpackagelater{titlesec}{2016/03/21}{%
@@ -132,6 +134,8 @@
 \newcommand{\school}[1]{\def\@school{#1}}
 \let\@programme\@empty
 \newcommand{\programme}[1]{\def\@programme{#1}}
+\let\@kthcover\@empty
+\newcommand{\kthcover}[1]{\def\@kthcover{#1}}
 
 % Command to print out the standardized title page
 \renewcommand{\titlepage}{
@@ -200,6 +204,7 @@
 
 
 \newcommand{\frontmatter}{
+  \ifx\@kthcover\@empty\relax\else \includepdf[pages={1,{}}]{\@kthcover}\fi
   \pagenumbering{roman}
   \setcounter{page}{1}
 }
@@ -207,6 +212,12 @@
 \newcommand{\mainmatter}{
   \cleardoublepage
   \pagenumbering{arabic}
+}
+
+\newcommand{\tailmatter}{
+  \ifx\@kthcover\@empty\relax\else
+  \cleardoublepage
+  \includepdf[pages={{},2}]{\@kthcover}\fi
 }
 
 \endinput
