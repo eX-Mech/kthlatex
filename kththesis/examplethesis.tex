@@ -3,9 +3,8 @@
 \usepackage{blindtext} % This is just to get some nonsense text in this template, can be safely removed
 
 \usepackage{csquotes} % Recommended by biblatex
-\usepackage{biblatex}
+\usepackage[style=numeric,sorting=none,backend=biber]{biblatex}
 \addbibresource{references.bib} % The file containing our references, in BibTeX format
-
 
 \title{This is the English title}
 \alttitle{Detta är den svenska översättningen av titeln}
@@ -13,9 +12,13 @@
 \email{osquar@kth.se}
 \supervisor{Lotta Larsson}
 \examiner{Lennart Bladgren}
+\hostcompany{Företaget AB} % Remove this line if the project was not done at a host company
 \programme{Master in Computer Science}
 \school{School of Electrical Engineering and Computer Science}
 \date{\today}
+
+% Uncomment the next line to include cover generated at https://intra.kth.se/kth-cover?l=en
+% \kthcover{kth-cover.pdf}
 
 
 \begin{document}
@@ -62,17 +65,31 @@ the work of \textcite{einstein2016}.
 \Blindtext
 
 \section{Research Question}
+\blindtext
 
+\chapter{Background}
 \blindtext
 
 \chapter{Methods}
-
 \blindtext
 
-\printbibliography[heading=bibintoc] % Print the bibliography (and make it appear in the table of contents)
+\chapter{Results}
+\blindtext
+
+\chapter{Discussion}
+\blindtext
+
+\chapter{Conclusions}
+\blindtext
+
+% Print the bibliography (and make it appear in the table of contents)
+\printbibliography[heading=bibintoc]
 
 \appendix
 
-\chapter{Unnecessary Appended Material}
+\chapter{Something Extra}
+
+% Tailmatter inserts the back cover page (if enabled)
+\tailmatter
 
 \end{document}

@@ -59,6 +59,8 @@
 \RequirePackage{fancyhdr} % Take control of headers and footers
 \RequirePackage{emptypage} % Supress page numbers on otherwise empty pages
 
+\RequirePackage{pdfpages} % Used to include the preformatted KTH cover pages
+
 \RequirePackage{titlesec} % Redefine the appearance of headers
 % === Patch to circumvent a bug in the titlesec package version 2.10.1
 \@ifpackagelater{titlesec}{2016/03/21}{%
@@ -122,14 +124,18 @@
 \newcommand{\subtitle}[1]{\def\@subtitle{#1}}
 \let\@alttitle\@empty
 \newcommand{\alttitle}[1]{\def\@alttitle{#1}}
-\let\@principal\@empty
-\newcommand{\principal}[1]{\def\@principal{#1}}
+\let\@hostcompany\@empty
+\newcommand{\hostcompany}[1]{\def\@hostcompany{#1}}
+\let\@hostorganization\@empty
+\newcommand{\hostorganization}[1]{\def\@hostorganization{#1}}
 \let\@email\@empty
 \newcommand{\email}[1]{\def\@email{#1}}
 \let\@school\@empty
 \newcommand{\school}[1]{\def\@school{#1}}
 \let\@programme\@empty
 \newcommand{\programme}[1]{\def\@programme{#1}}
+\let\@kthcover\@empty
+\newcommand{\kthcover}[1]{\def\@kthcover{#1}}
 
 % Command to print out the standardized title page
 \renewcommand{\titlepage}{
@@ -176,7 +182,8 @@
     Handledare: \@supervisor\\
     Examinator: \@examiner\\
     \@school\\
-    \ifx\@principal\@empty\relax\else Uppdragsgivare: \@principal\\\fi
+    \ifx\@hostcompany\@empty\relax\else Uppdragsgivare: \@hostcompany\\\fi
+    \ifx\@hostorganization\@empty\relax\else Uppdragsgivare: \@hostorganization\\\fi
     \ifx\@alttitle\empty\relax\else Engelsk titel: %
     \begin{otherlanguage}{english}\sffamily\@alttitle\end{otherlanguage}\\\fi
   \else
@@ -185,7 +192,8 @@
     Supervisor: \@supervisor\\
     Examiner: \@examiner\\
     \@school\\
-    \ifx\@principal\@empty\relax\else Principal: \@principal\\\fi
+    \ifx\@hostcompany\@empty\relax\else Host company: \@hostcompany\\\fi
+    \ifx\@hostorganization\@empty\relax\else Host organization: \@hostorganization\\\fi
     \ifx\@alttitle\empty\relax\else Swedish title: %
     \begin{otherlanguage}{swedish}\sffamily\@alttitle\end{otherlanguage}\\\fi
   \fi
@@ -196,6 +204,7 @@
 
 
 \newcommand{\frontmatter}{
+  \ifx\@kthcover\@empty\relax\else \includepdf[pages={1,{}}]{\@kthcover}\fi
   \pagenumbering{roman}
   \setcounter{page}{1}
 }
@@ -203,6 +212,12 @@
 \newcommand{\mainmatter}{
   \cleardoublepage
   \pagenumbering{arabic}
+}
+
+\newcommand{\tailmatter}{
+  \ifx\@kthcover\@empty\relax\else
+  \cleardoublepage
+  \includepdf[pages={{},2}]{\@kthcover}\fi
 }
 
 \endinput
