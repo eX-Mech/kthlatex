@@ -2,7 +2,7 @@
 \mode<presentation>
 
 \RequirePackage{tikz}
-% \usetikzlibrary{positioning}
+\usetikzlibrary{positioning}
 
 
 %------------------------------------------------------------------------------
@@ -128,7 +128,7 @@
 		};
 		%
 		% AUTHOR AND INSTITUTE
-		\node[anchor=north,xshift=-\xshifttt\paperwidth,yshift=0.1\paperheight] (author) at (current page.center) {
+		\node[yshift=0.2\paperheight](author)[below=of title] {
 			\begin{beamercolorbox}{author}%
 				\flushright%
 				\usebeamerfont{author}\small\insertauthor%
