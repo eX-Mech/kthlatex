@@ -2,13 +2,42 @@
 \mode<presentation>
 
 \RequirePackage{tikz}
-\definecolor{kthcolor}{RGB}{25,84,166}
+% \usetikzlibrary{positioning}
 
+
+%------------------------------------------------------------------------------
+% Conditional expressions
+%
+\newif\ifcenteredlogos  \centeredlogosfalse
+\newif\ifdateinfootline \dateinfootlinefalse
+
+
+%------------------------------------------------------------------------------
+% Colors
+%
+\definecolor{kthcolor}{RGB}{25,84,166}
+\definecolor{beamer@blendedblue}{RGB}{25.0,84.0,166.0} % == KTH blue
+
+% Outline
+% \setbeamercolor{section in toc}{fg=kthcolor, bg=white}
+
+% Frame
+% \setbeamercolor{frametitle}{fg=kthcolor, bg=white}
+% \setbeamercolor{normal text}{fg=black, bg=white}
+% \setbeamercolor{alerted text}{fg=kthcolor, bg=white}
+
+%------------------------------------------------------------------------------
+% Settings
+%
 \setbeamertemplate{navigation symbols}{}
 \setbeamersize{text margin left=4mm,text margin right=4mm}
 
 \pgfdeclareimage[height=12mm]{kthlogo}{kthgraphics/KTH-logo}
 
+
+%------------------------------------------------------------------------------
+% Graphics
+%
 \newcommand{\kthlines}{%
 \begin{tikzpicture}[line width=0.5pt,rounded corners=2pt,color=kthcolor,x=2mm,y=2mm]
   \clip (4,-1) rectangle (81, 12);
@@ -29,12 +58,26 @@
   \draw (0,0) -- (77,0);
 \end{tikzpicture}}
 
+% Cover image
+\def\insertcvrimg{}\def\cvrimg#1#2#3{%
+	\gdef\insertcvrimg{\node[anchor=center] (coverimage) at (page cs:#1,#2) {#3};}%
+}
 
+%------------------------------------------------------------------------------
+% Start (title) page
+%
 \newcommand{\startpage}{%
 \usebackgroundtemplate{\vbox{\null\vspace{4mm}
   \hspace{4mm}\pgfuseimage{kthlogo}\par
   \vspace{50mm}\hbox{\hspace{3mm}\kthlines}%
-  \vspace{5mm}\hbox{\hspace{3mm}\kthsingleline}}}}
+  \vspace{5mm}\hbox{\hspace{3mm}\kthsingleline}}}
+  \centeredlogostrue \dateinfootlinetrue%
+  \begin{frame}[label=title-frame]%
+      \usebeamertemplate*{title page}%
+  \end{frame}%
+  \addtocounter{framenumber}{-1}%
+  \centeredlogosfalse \dateinfootlinefalse%
+}
 
 \newcommand{\normalpage}{%
 \usebackgroundtemplate{\vbox{\null
@@ -66,3 +109,70 @@
 %     \end{beamercolorbox}%
 % }
 % \makeatother
+%
+\defbeamertemplate*{title page}{KTH}[1][]%
+{%
+	\begin{tikzpicture}[remember picture, overlay]%
+		%
+		\pgfmathsetmacro{\xshifttt}{.050}
+		%
+		% COVER IMAGE
+		\insertcvrimg%
+		%
+		% TITLE
+		\node[anchor=south,xshift=-\xshifttt\paperwidth] (title) at (current page.center) {
+			\begin{beamercolorbox}[wd=\textwidth]{title page header}%
+				\flushright%
+				\usebeamerfont{title}\textbf{\inserttitle}%
+			\end{beamercolorbox}%
+		};
+		%
+		% AUTHOR AND INSTITUTE
+		\node[anchor=north,xshift=-\xshifttt\paperwidth,yshift=0.1\paperheight] (author) at (current page.center) {
+			\begin{beamercolorbox}{author}%
+				\flushright%
+				\usebeamerfont{author}\small\insertauthor%
+				\\[0.5\baselineskip]%
+				\usebeamerfont{normal text}\scriptsize\textit{\insertinstitute}%
+			\end{beamercolorbox}%
+		};
+		%
+	\end{tikzpicture}
+}%
+
+
+%------------------------------------------------------------------------------
+% Thanks page
+%
+\newcommand*{\thankspage}%
+{%
+	\centeredlogostrue%
+	\addtocounter{framenumber}{-1}%
+	\begin{frame}%
+		\usebeamertemplate*{thanks page}%
+	\end{frame}%
+	\centeredlogosfalse%
+}%
+%
+\defbeamertemplate*{thanks page}{KTH}[1][]%
+{%
+	\begin{tikzpicture}[remember picture, overlay]%
+		%
+		\pgfmathsetmacro{\xshifttt}{.050}
+		%
+		\node[anchor=south,xshift=-\xshifttt\paperwidth] (thanks) at (current page.center) {
+			\begin{beamercolorbox}[wd=\textwidth]{title page header}%
+				\flushright%
+				\usebeamerfont{title}\textbf{Thank you for your attention.}%
+			\end{beamercolorbox}%
+		};
+		%
+		\node[anchor=north,xshift=-\xshifttt\paperwidth] (questions) at (current page.center) {
+			\begin{beamercolorbox}{author}%
+				\flushright%
+				\usebeamerfont{author}\small{Any questions?}%
+			\end{beamercolorbox}%
+		};
+		%
+	\end{tikzpicture}
+}%
