@@ -30,6 +30,7 @@
 % Settings
 %
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
 \setbeamersize{text margin left=4mm,text margin right=4mm}
 
 \pgfdeclareimage[height=12mm]{kthlogo}{kthgraphics/KTH-logo}
@@ -70,7 +71,7 @@
 \usebackgroundtemplate{\vbox{\null\vspace{4mm}
   \hspace{4mm}\pgfuseimage{kthlogo}\par
   \vspace{50mm}\hbox{\hspace{3mm}\kthlines}%
-  \vspace{5mm}\hbox{\hspace{3mm}\kthsingleline}}}
+  \vspace{3mm}\hbox{\hspace{3mm}\kthsingleline}}}
   \centeredlogostrue \dateinfootlinetrue%
   \begin{frame}[label=title-frame]%
       \usebeamertemplate*{title page}%
@@ -81,7 +82,7 @@
 
 \newcommand{\normalpage}{%
 \usebackgroundtemplate{\vbox{\null
-  \vspace{\paperheight}\vspace{-3mm}\hbox{\hspace{3mm}\kthsingleline}}}}
+  \vspace{\paperheight}\vspace{-5mm}\hbox{\hspace{3mm}\kthsingleline}}}}
 
 
 % move title to center
