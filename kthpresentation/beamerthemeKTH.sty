@@ -34,7 +34,7 @@
 % Settings
 %
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
+\setbeamertemplate{footline}[frame number]%
 \setbeamersize{text margin left=4mm,text margin right=4mm}
 
 \pgfdeclareimage[height=12mm]{kthlogo}{kthgraphics/KTH-logo}
@@ -77,10 +77,11 @@
   \vspace{50mm}\hbox{\hspace{3mm}\kthlines}%
   \vspace{3mm}\hbox{\hspace{3mm}\kthsingleline}}}
   \centeredlogostrue \dateinfootlinetrue%
-  \begin{frame}[label=title-frame]%
+  \begin{frame}[plain,label=title-frame]%
       \usebeamertemplate*{title page}%
   \end{frame}%
-  \addtocounter{framenumber}{-1}%
+  \addtocounter{framenumber}{-3}%
+  % \setcounter{framenumber}{0}%
   \centeredlogosfalse \dateinfootlinefalse%
 }
 
@@ -156,8 +157,7 @@
 	\vspace{265pt}% or ~93mm
 	\hbox{\hspace{3mm}\kthsingleline}}}
 	\centeredlogostrue%
-	\addtocounter{framenumber}{-1}%
-	\begin{frame}%
+    \begin{frame}[noframenumbering,plain]%
 		\usebeamertemplate*{thanks page}%
 	\end{frame}%
 	\centeredlogosfalse%
