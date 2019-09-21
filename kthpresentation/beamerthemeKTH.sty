@@ -29,6 +29,11 @@
 % Footnote
 \setbeamercolor{footnote}{fg=gray}
 \setbeamercolor{footnote mark}{fg=gray}
+% use symbols instead of arabic numerals
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+% reset footnote every page
+\RequirePackage{perpage}
+\MakePerPage{footnote}
 
 %------------------------------------------------------------------------------
 % Settings
