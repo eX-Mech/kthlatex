@@ -27,13 +27,18 @@
 \setbeamercolor{alerted text}{fg=purple, bg=white}
 
 % Footnote
-\setbeamercolor{footnote}{fg=gray}
-\setbeamercolor{footnote mark}{fg=gray}
+\setbeamercolor{footnote}{fg=darkgray}
+\setbeamercolor{footnote mark}{fg=darkgray}
+\setbeamerfont{footnote}{size=\footnotesize}
 % use symbols instead of arabic numerals
 \renewcommand*{\thefootnote}{\fnsymbol{footnote}}
 % reset footnote every page
 \RequirePackage{perpage}
 \MakePerPage{footnote}
+
+% Itemize
+\setbeamertemplate{itemize/enumerate body begin}{\normalsize}
+\setbeamertemplate{itemize/enumerate subbody begin}{\normalsize}
 
 %------------------------------------------------------------------------------
 % Settings
